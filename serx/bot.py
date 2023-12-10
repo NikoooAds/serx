@@ -34,7 +34,7 @@ async def main():
     dp.startup.register(info.startup_app)
 
     # Routers
-    dp.include_router(view.router)
+    dp.include_router(view.main_router)
 
     dp.shutdown.register(info.shutdown_app)
 
