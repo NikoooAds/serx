@@ -13,3 +13,14 @@ class Request:
         )
 
         await self.connector.execute(query, timeout=60)
+
+    async def check_roles(self, user_id):
+        query = f"SELECT * FROM users WHERE user_id = {user_id};"
+
+        return await self.connector.fetch(query)
+
+    async def get_nomenclature(self):
+        query = f"SELECT * FROM nomenclature;"
+
+        # record = await self.connector.fetch(query)
+        return await self.connector.fetch(query)
