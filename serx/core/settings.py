@@ -10,8 +10,18 @@ class Bots:
 
 
 @dataclass
+class DBConfig:
+    host: str
+    port: int
+    database: str
+    user: str
+    password: str
+
+
+@dataclass
 class Settings:
     bot: Bots
+    db: DBConfig
 
 
 def get_settings(path: str):
@@ -20,6 +30,13 @@ def get_settings(path: str):
 
     return Settings(
         bot=Bots(bot_token=env.str("BOT_TOKEN"), admin_id=env.int("ADMIN_ID")),
+        db=DBConfig(
+            host=env.str("POSTGRES_HOST"),
+            port=env.int("POSTGRES_PORT"),
+            database=env.str("POSTGRES_DATABASE"),
+            user=env.str("POSTGRES_USER"),
+            password=env.str("POSTGRES_PASSWORD"),
+        ),
     )
 
 
